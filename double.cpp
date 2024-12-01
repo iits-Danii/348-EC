@@ -32,6 +32,7 @@ int main() {
 
 
 double extractor(string s) {
+    //if/else if branch determines if length is within range and if signs are formatted correctly (if present)
     if (s.length() > 20) {
         return -999999.99;
     } else if (s.find("+") != string::npos && s.find("-") != string::npos) {
@@ -42,6 +43,7 @@ double extractor(string s) {
         }
     }
     
+    //finds and removes signs, changes is_negative to true if negative sign found at s[0], negative is applied at the end of the function
     bool is_negative = false;
     if (s[0] == '-') {
         is_negative = true;
@@ -72,7 +74,7 @@ double extractor(string s) {
 
     double decimal_multiplier = 0.1;
     for (int i = decimal_pos + 1; i < s.length(); ++i) {
-        output += (s[i] - '0') * decimal_multiplier;
+        output += (s[i] - '0') * decimal_multiplier; //'builds' the decimal part (after the decimal) digit by digit and adds it to output
         decimal_multiplier *= 0.1;
     }
 
